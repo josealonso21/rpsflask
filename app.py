@@ -128,6 +128,6 @@ def create_join_game(username):
             db.session.commit()
             return jsonify({"sucess":"game updated"})
         
-@app.route("/Game/<username>/<randomId>/<set_number>", method=["GET","POST","PUT"])
+@app.route("/Game/<username>/<randomId>/<set_number>", methods=["GET","POST","PUT"])
 def set_game_status(username,randomId, set_number):
     return jsonify({"To do"})
