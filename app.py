@@ -112,7 +112,9 @@ def create_join_game(username):
             return jsonify({"error": "Game id already exists"}), 401
         else: 
             new_game = Game(idGame=idGame, username_1=username_1, username_2=username_2)
+            new_set = Set(idGame=idGame, set_number=1, user_status_1="",user_status_2="")
             db.session.add(new_game)
+            db.session.add(new_set)
             db.session.commit()
             return jsonify({"sucess":"game created"})
     elif request.method == "PUT":
@@ -125,3 +127,7 @@ def create_join_game(username):
             game.username_2 = username_2
             db.session.commit()
             return jsonify({"sucess":"game updated"})
+        
+@app.route("/Game/<username>/<randomId>/<set_number>", method=["GET","POST","PUT"])
+def set_game_status(username,randomId, set_number):
+    return jsonify({"To do"})
